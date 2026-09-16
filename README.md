@@ -84,24 +84,29 @@ All four stages are orchestrated by [`src/pipeline/agent.py`](src/pipeline/agent
 
 ## Quickstart
 
+The repository already includes the trained classifier and FAISS retrieval artifacts under `models/` (they're committed to git, not gitignored), so a fresh clone can run the demo directly — no source dataset or model-building step required.
+
+### 1. Install dependencies
+
 ```bash
-# 1. Install dependencies
 pip install -r requirements.txt
+```
 
-# 2. Add your Groq API key
+### 2. Add your Groq API key
+
+```bash
 cp .env.example .env
-# then edit .env and set GROQ_API_KEY=...
+# then edit .env and set:
+GROQ_API_KEY=...
+```
 
-# 3. Build the model artifacts once (trains the classifier, builds the
-#    FAISS index, saves both to models/ — takes a few minutes on CPU,
-#    mostly spent embedding 10,000 conversations with MiniLM)
-python tools/build_artifacts.py
+### 3. Run the demo
 
-# 4. Run the demo
+```bash
 streamlit run app.py
 ```
 
-After step 3, `models/` contains everything the app needs to start instantly on every subsequent run — no retraining or re-embedding happens at demo time:
+That's it — `models/` already contains everything the app needs to start instantly:
 
 ```text
 models/
@@ -110,7 +115,15 @@ models/
 └── corpus_metadata.csv   # row-aligned conversations + intents (FAISS row i ↔ metadata row i)
 ```
 
-> **Note:** `data/raw/`, `data/processed/`, and `.env` are gitignored (large files / secrets). `tools/build_artifacts.py` needs `data/processed/dev_pseudo_labeled.csv` to exist locally to build the artifacts above — see [Known Issues](#known-issues--roadmap).
+### Rebuilding artifacts (optional)
+
+You only need this if you want to rebuild the artifacts from the 10K development corpus yourself — for example, after changing labels or retraining the classifier:
+
+```bash
+python tools/build_artifacts.py
+```
+
+This takes a few minutes on CPU (mostly spent embedding 10,000 conversations with MiniLM), overwrites `models/*`, and requires `data/processed/dev_pseudo_labeled.csv` to exist locally — that file is gitignored (along with `data/raw/` and `.env`), so it won't be present after a fresh clone unless you regenerate it via notebooks 01–04 or otherwise supply it yourself.
 
 ## Repository Structure
 
