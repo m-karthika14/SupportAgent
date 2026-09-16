@@ -263,7 +263,7 @@ The human rater's independent pass through all 38 replies also surfaced a concre
 
 1. **A trivial baseline is insufficient** — majority-class prediction reaches only 34.0% Golden Set accuracy (0.046 macro F1); the task genuinely requires distinguishing 11 classes.
 2. **Lexical and semantic features are complementary, not redundant** — combining TF-IDF with MiniLM embeddings (54.0%) beats either alone (43.0% / 45.5%), a full 11-point jump over TF-IDF alone.
-3. **Retrieval quality is strong enough to ground generation** — 70% of the time, a truly relevant historical case is somewhere in the top 5 retrieved results.
+3. **Retrieval provides useful intent-level evidence coverage** — 70% of the 200 Golden Set queries had at least one same-intent historical case in the top 5 retrieved results.
 4. **The LLM judge is a reasonable, imperfect proxy for human judgment** — strong correlation on Correctness/Actionability (ρ > 0.79), weaker on Groundedness (ρ = 0.49), where the judge appears more lenient than a human reading the same evidence side-by-side with the reply.
 5. **Generation reliability, not intent accuracy, is currently the biggest gap** — the reply-truncation bug affects over a third of sampled outputs and is a bigger practical risk to the demo than any classifier accuracy number.
 
