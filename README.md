@@ -29,6 +29,8 @@ streamlit run app.py
 
 ## Overview
 
+Report Link: https://drive.google.com/file/d/1rBUC6-bexSKrqhtKnVLffahIo_-u3Sbr/view?usp=sharing
+
 SupportIQ takes a raw customer message ("*My package hasn't arrived yet.*") and produces a complete, auditable support decision:
 
 1. **Classifies** the customer's intent (one of 11 categories)
@@ -37,6 +39,8 @@ SupportIQ takes a raw customer message ("*My package hasn't arrived yet.*") and 
 4. **Generates** a reply that is grounded *only* in the retrieved evidence — never inventing policies, refunds, or links
 
 Every stage was built independently, measured against held-out and human-labeled data, and only wired into a single runnable pipeline once each piece's performance was understood in isolation. That evaluation trail is what the [Results](#results) section below reports.
+
+
 
 ## Architecture
 
