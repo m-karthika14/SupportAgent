@@ -1,0 +1,9 @@
+{
+  "evaluation_examples": 200,
+  "relevance_definition": "Retrieved case is considered relevant when its historical pseudo-intent matches the Golden Set human intent.",
+  "recall_at_1": 0.375,
+  "recall_at_3": 0.61,
+  "recall_at_5": 0.7,
+  "recall_at_10": 0.79,
+  "mrr": 0.515
+}

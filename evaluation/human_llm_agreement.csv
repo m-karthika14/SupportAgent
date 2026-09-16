@@ -1,0 +1,6 @@
+criterion,n,spearman_rho,p_value,mean_absolute_error,exact_agreement,within_1_point
+correctness,38,0.792,0.0,0.632,0.5,0.895
+groundedness,38,0.492,0.0017,1.211,0.342,0.632
+relevance,38,0.683,0.0,0.711,0.421,0.895
+tone,38,0.643,0.0,0.658,0.421,0.921
+actionability,38,0.803,0.0,0.553,0.579,0.868

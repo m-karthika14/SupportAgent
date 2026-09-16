@@ -1,0 +1,36 @@
+# Requirements for the SupportIQ demo (app.py + src/pipeline/ +
+# tools/build_artifacts.py).
+#
+# This list is deliberately curated to only what SupportIQ itself
+# imports - NOT a raw `pip freeze` of this development machine, which
+# would also drag in unrelated notebook/exploration packages. Versions
+# are pinned to what was used to produce the reported results (54.0%
+# accuracy / 0.484 macro F1 on the Golden Set), so a fresh install
+# reproduces the same numbers.
+#
+# If you also want to re-run notebooks 01-06 (not required for the
+# app itself), additionally install: jupyter, matplotlib, seaborn.
+
+pandas==3.0.5
+numpy==2.5.3
+scikit-learn==1.9.1
+scipy==1.18.1
+
+# Embeddings model (all-MiniLM-L6-v2) used for both the classifier's
+# semantic features and the FAISS retrieval index.
+sentence-transformers==6.0.1
+
+# Vector similarity search over the 10K retrieval corpus.
+faiss-cpu==1.15.0
+
+# Persisting the fitted TF-IDF vectorizer + Logistic Regression classifier.
+joblib==1.6.0
+
+# Groq's chat completions API is OpenAI-compatible, so the standard
+# `openai` client is reused with Groq's base_url (see
+# src/pipeline/generator.py) - no separate Groq SDK is required.
+openai==3.14.1
+python-dotenv==1.2.3
+
+# Demo UI.
+streamlit==1.64.0
