@@ -82,24 +82,24 @@ def main():
 
             if choice == "q":
                 df.to_csv(AUDIT_PATH, index=False)
-                print("\n✓ Progress saved. Exiting...")
+                print("\nProgress saved. Exiting...")
                 return
 
             if choice in ["s", "skip"]:
-                print("⊘ Skipped")
+                print("Skipped")
                 break
 
             if choice == "0":
                 human_label = row["pseudo_intent"]
                 df.at[index, "human_label"] = human_label
-                status = "✓ ACCEPT" if human_label == row["pseudo_intent"] else "✓ CORRECT"
+                status = "ACCEPT" if human_label == row["pseudo_intent"] else "CORRECT"
                 print(f"{status}: {human_label}")
                 break
 
             if choice.isdigit() and 1 <= int(choice) <= len(INTENTS):
                 human_label = INTENTS[int(choice) - 1]
                 df.at[index, "human_label"] = human_label
-                match = "✓ MATCH" if human_label == row["pseudo_intent"] else "⚠ MISMATCH"
+                match = "MATCH" if human_label == row["pseudo_intent"] else "MISMATCH"
                 print(f"{match}: {human_label}")
                 break
 
